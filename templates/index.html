@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>COVID Risk Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div class="container">
+
+    <h1>🦠 COVID Risk Predictor</h1>
+    <p class="subtitle">Upload patient dataset to predict COVID outcome</p>
+
+    <form action="/predict" method="post" enctype="multipart/form-data">
+        
+        <label class="upload-box">
+            <input type="file" name="file" required>
+            <span>📁 Choose CSV / Excel File</span>
+        </label>
+
+        <button type="submit">🚀 Predict Now</button>
+    </form>
+
+    {% if prediction_text %}
+        <div class="result-box">
+            <h3>{{ prediction_text }}</h3>
+        </div>
+    {% endif %}
+
+</div>
+
+</body>
+</html>
